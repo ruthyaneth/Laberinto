@@ -52,19 +52,19 @@ public class ToolBar extends JToolBar {
 	}
 
 	private void addButtonOpenImage() {
-		buttonOpenImage = new JButton(createImageIcon("/imagesSettings/open_folder_green.png"));
+		buttonOpenImage = new JButton(createImageIcon(ConstantsView.IMAGE_OPEN));
 		buttonOpenImage.addActionListener(controller);
 		buttonOpenImage.setActionCommand(ConstantsListener.ITEM_FILE_OPEN_IMAGE);
 		this.add(buttonOpenImage);
 	}
 
 	private void addButtonCreateImage() {
-		buttonCreateImage = new JButton(createImageIcon("/imagesSettings/new_document.png"));
+		buttonCreateImage = new JButton(createImageIcon(ConstantsView.IMAGE_CREATE));
 		this.add(buttonCreateImage);
 	}
 
 	private void addButtonEditImage() {
-		buttonEditImage = new JButton(createImageIcon("/imagesSettings/color_line.png"));
+		buttonEditImage = new JButton(createImageIcon(ConstantsView.IMAGE_EDIT));
 		this.add(buttonEditImage);
 	}
 
