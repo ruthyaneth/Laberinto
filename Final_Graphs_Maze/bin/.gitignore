@@ -1,0 +1,13 @@
+/config/
+/constant/
+/controller/
+/graph_maze/
+/img/
+/language/
+/logic/
+/model/
+/persistence/
+/resources/
+/structure/
+/view/
+/imagesSettings/
