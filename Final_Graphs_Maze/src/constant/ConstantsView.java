@@ -65,6 +65,8 @@ public class ConstantsView {
 	public static final String  IMAGE_EXIT =  "/imagesSettings/salir.png";
 	public static final String LOGO_APLICATION = "/imagesSettings/maze.png";
 	public static final String IMAGE_ABOUT = "/imagesSettings/about.png";
+	public static final String IMAGE_HELP = "/imagesSettings/help.png";
+	public static final String IMAGE_LABEL_IMAGEN1 = "/imagesSettings/photo.PNG";
 	
 	public static final String TITLE_PANEL_IMAGE = "Visualizacion_imagen";
 	
@@ -83,6 +85,7 @@ public class ConstantsView {
 	public static final String NAME_ITEM_ABOUT = "NAME_ITEM_ABOUT";
 	public static final String NAME_ITEM_HOW_TO_USE = "NAME_ITEM_HOW_TO_USE";
 	public static final String TITLE_DIALOG_HELP_ABOUT = "TITLE_DIALOG_HELP_ABOUT";
-	public static final int WIDTH_DIALOJ_ABOUT = 400;
-	public static final int HEIGHT_DIALOG_ABOUT = 300;
+	public static final int WIDTH_DIALOJ_ABOUT = 600;
+	public static final int HEIGHT_DIALOG_ABOUT = 580;
+	public static final String INFO_ABOUT = "INFO_ABOUT";
 }

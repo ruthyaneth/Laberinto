@@ -152,6 +152,7 @@ public class Menu extends JMenuBar {
 		itemHelpHowToUse = new JMenuItem();
 		itemHelpHowToUse.addActionListener(controller);
 		itemHelpHowToUse.setActionCommand(ConstantsListener.ITEM_HELP_HOW_TO_USE);
+		this.itemHelpHowToUse.setIcon(new ImageIcon(getClass().getResource(ConstantsView.IMAGE_HELP)));
 		menuHelp.add(itemHelpHowToUse);
 	}
 	public void changeLenguage() throws IOException{

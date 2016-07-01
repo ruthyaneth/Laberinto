@@ -4,9 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
@@ -21,7 +24,8 @@ public class DialogHelpAbout extends JDialog {
 	private JLabel labelImagen1;
 	private JLabel labelImagen2;
 	private JPanel panelInfo;
-	private JTextField textFieldInfo;
+	private JTextArea textAreaInfo;
+	private JScrollPane scrollPane;
 
 	public DialogHelpAbout() {
 
@@ -55,17 +59,22 @@ public class DialogHelpAbout extends JDialog {
 	}
 	private void addLabelImagen1(){
 		
-		labelImagen1 = new JLabel("aqui va la foto");
+		labelImagen1 = new JLabel(" ");
 		labelImagen1.setBorder(new LineBorder(Color.decode("#A901DB")));
+		labelImagen1.setIcon(new ImageIcon(getClass().getResource(ConstantsView.IMAGE_LABEL_IMAGEN1)));
 		panelImages.add(labelImagen1);
 	}
 	
 	private void addFieldInfo(){
-		textFieldInfo = new JTextField();
-		panelInfo.add(textFieldInfo);
-		textFieldInfo.setBackground(Color.decode("#151515"));
-		textFieldInfo.setText("aqui va la informacion");
-		textFieldInfo.setForeground( Color.decode("#FAFAFA"));
+		textAreaInfo = new JTextArea(10,10);
+		scrollPane = new JScrollPane(textAreaInfo);
+		this.add(scrollPane);
+		scrollPane.setBounds(50, 20, 10, 100);
+		textAreaInfo.setEditable(false);
+		textAreaInfo.setLineWrap(true);
+		textAreaInfo.setWrapStyleWord(true);
+		textAreaInfo.setBackground(Color.decode("#151515"));
+		textAreaInfo.setForeground( Color.decode("#FAFAFA"));
 	}
 	private void addLabelImagen2(){
 		
@@ -79,5 +88,6 @@ public class DialogHelpAbout extends JDialog {
 		HandlerProperties handlerProperties = new HandlerProperties(HandlerLanguage.language);
 		handlerProperties.load();
 		this.setTitle(handlerProperties.getProperty(ConstantsView.TITLE_DIALOG_HELP_ABOUT));
+		textAreaInfo.setText(handlerProperties.getProperty(ConstantsView.INFO_ABOUT));
 	}
 }
