@@ -34,7 +34,7 @@ import constant.ConstantsView;
  * @author Jenny Paola Quesada, Ruth Yaneth Rojas.
  *
  */
-public class WindowSelectionImage extends JDialog {
+public class WindowSelectionImage extends JPanel {
 
 	// ------Atributtes------
 
@@ -66,7 +66,6 @@ public class WindowSelectionImage extends JDialog {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(ConstantsView.LOGO_APLICATION)));
 	}
 
 	// ------Methods--------
@@ -75,7 +74,7 @@ public class WindowSelectionImage extends JDialog {
 
 		this.jFileChooser = new JFileChooser();
 		this.labelSelecedOtherMAze = new JLabel();
-		this.setSize(1200, 600);
+		this.setSize(700, 500);
 		addPanelMediumLevel();
 		this.labelImagen3L2 = new JLabel();
 		this.labelImagen1L2 = new JLabel();
@@ -91,11 +90,7 @@ public class WindowSelectionImage extends JDialog {
 		this.labelLevel = new JLabel();
 		this.buttonOpenFile = new JButton();
 
-		this.setBackground(new Color(204, 255, 255));
-		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
 		this.labelSelecedOtherMAze.setFont(new Font("Snap ITC", 1, 18));
-		this.labelSelecedOtherMAze.setForeground(new Color(0, 153, 255));
 
 		this.labelSelecedOtherMAze.setText(ConstantsView.LABEL_SELECTED_OTHER_MAZE);
 
@@ -262,8 +257,6 @@ public class WindowSelectionImage extends JDialog {
 		this.labelLevel.setForeground(new Color(0, 153, 255));
 
 		this.buttonOpenFile.setFont(new java.awt.Font("Tahoma", 2, 18));
-		this.buttonOpenFile.setBackground(Color.decode("#819FF7"));
-		this.buttonOpenFile.setBorder(BorderFactory.createLineBorder(Color.decode("#380B61")));
 		this.buttonOpenFile.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
@@ -272,8 +265,8 @@ public class WindowSelectionImage extends JDialog {
 			}
 		});
 
-		GroupLayout layout = new GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
+		GroupLayout layout = new GroupLayout(this);
+		this.setLayout(layout);
 		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(
 				Alignment.TRAILING,
 				layout.createSequentialGroup().addGroup(layout.createParallelGroup(Alignment.TRAILING)
@@ -315,60 +308,48 @@ public class WindowSelectionImage extends JDialog {
 				.addGroup(layout.createParallelGroup(Alignment.LEADING).addGroup(layout.createSequentialGroup()
 						.addGap(22, 22, 22).addComponent(labelLevel).addContainerGap(484, Short.MAX_VALUE))));
 
-		pack();
-		setLocationRelativeTo(null);
 	}
 
 	private void jButton1ActionPerformed(ActionEvent evt) {
 		if (jFileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 			File f = jFileChooser.getSelectedFile();
-			this.dispose();
 			new WinMaze(f, "Personalizado").setVisible(true);
 		}
 	}
 
 	private void lf1MouseClicked(java.awt.event.MouseEvent evt) {
-		this.dispose();
 		new WinMaze(getClass().getResource("/img/facil2.png").getFile(), "Facil").setVisible(true);
 	}
 
 	private void lf2MouseClicked(java.awt.event.MouseEvent evt) {
-		this.dispose();
 		new WinMaze(getClass().getResource("/img/facil2.png").getFile(), "Facil").setVisible(true);
 	}
 
 	private void lf3MouseClicked(java.awt.event.MouseEvent evt) {
-		this.dispose();
 		new WinMaze(getClass().getResource("/img/labN1.png").getFile(), "Facil").setVisible(true);
 	}
 
 	private void li1MouseClicked(java.awt.event.MouseEvent evt) {
-		this.dispose();
 		new WinMaze(getClass().getResource("/img/inter1.png").getFile(), "Intermedio").setVisible(true);
 	}
 
 	private void li2MouseClicked(java.awt.event.MouseEvent evt) {
-		this.dispose();
 		new WinMaze(getClass().getResource("/img/inter2.png").getFile(), "Intermedio").setVisible(true);
 	}
 
 	private void li3MouseClicked(java.awt.event.MouseEvent evt) {
-		this.dispose();
 		new WinMaze(getClass().getResource("/img/labN2.png").getFile(), "Intermedio").setVisible(true);
 	}
 
 	private void ld1MouseClicked(java.awt.event.MouseEvent evt) {
-		this.dispose();
 		new WinMaze(getClass().getResource("/img/dificil1.png").getFile(), "Dificil").setVisible(true);
 	}
 
 	private void ld2MouseClicked(java.awt.event.MouseEvent evt) {
-		this.dispose();
 		new WinMaze(createFile("/img/labN3.png"), "Dificil").setVisible(true);
 	}
 
 	private void ld3MouseClicked(java.awt.event.MouseEvent evt) {
-		this.dispose();
 		new WinMaze(getClass().getResource("/img/labN4.png").getFile(), "Dificil").setVisible(true);
 	}
 
@@ -391,28 +372,18 @@ public class WindowSelectionImage extends JDialog {
 	}
 
 	private void myInit() {
-		// Filtro jfilechooser
 		jFileChooser.setFileFilter(new FileNameExtensionFilter("Imagenes", "jpg", "png", "gif", "jpeg"));
 
 		// Colocar imagenes
-		labelImagen1L1.setIcon(new ImageIcon(F1.getImage().getScaledInstance(labelImagen1L1.getWidth(),
-				labelImagen1L1.getHeight(), Image.SCALE_DEFAULT)));
-		labelImagen2L1.setIcon(new ImageIcon(F2.getImage().getScaledInstance(labelImagen2L1.getWidth(),
-				labelImagen2L1.getHeight(), Image.SCALE_DEFAULT)));
-		labelImagen3L1.setIcon(new ImageIcon(F3.getImage().getScaledInstance(labelImagen3L1.getWidth(),
-				labelImagen3L1.getHeight(), Image.SCALE_DEFAULT)));
-		labelImagen1L2.setIcon(new ImageIcon(I1.getImage().getScaledInstance(labelImagen1L2.getWidth(),
-				labelImagen1L2.getHeight(), Image.SCALE_DEFAULT)));
-		labelImagen2L2.setIcon(new ImageIcon(I2.getImage().getScaledInstance(labelImagen2L2.getWidth(),
-				labelImagen2L2.getHeight(), Image.SCALE_DEFAULT)));
-		labelImagen3L2.setIcon(new ImageIcon(I4.getImage().getScaledInstance(labelImagen3L2.getWidth(),
-				labelImagen3L2.getHeight(), Image.SCALE_DEFAULT)));
-		labelIamgen1L3.setIcon(new ImageIcon(D1.getImage().getScaledInstance(labelIamgen1L3.getWidth(),
-				labelIamgen1L3.getHeight(), Image.SCALE_DEFAULT)));
-		labelImagen2L3.setIcon(new ImageIcon(D2.getImage().getScaledInstance(labelImagen2L3.getWidth(),
-				labelImagen2L3.getHeight(), Image.SCALE_DEFAULT)));
-		labelImagen3L3.setIcon(new ImageIcon(D3.getImage().getScaledInstance(labelImagen3L3.getWidth(),
-				labelImagen3L3.getHeight(), Image.SCALE_DEFAULT)));
+		labelImagen1L1.setIcon(new ImageIcon(F1.getImage()));
+		labelImagen2L1.setIcon(new ImageIcon(F2.getImage()));
+		labelImagen3L1.setIcon(new ImageIcon(F3.getImage()));
+		labelImagen1L2.setIcon(new ImageIcon(I1.getImage()));
+		labelImagen2L2.setIcon(new ImageIcon(I2.getImage()));
+		labelImagen3L2.setIcon(new ImageIcon(I4.getImage()));
+		labelIamgen1L3.setIcon(new ImageIcon(D1.getImage()));
+		labelImagen2L3.setIcon(new ImageIcon(D2.getImage()));
+		labelImagen3L3.setIcon(new ImageIcon(D3.getImage()));
 	}
 
 	private ImageIcon F1 = createImageIcon("/img/facil1.png");
@@ -433,7 +404,7 @@ public class WindowSelectionImage extends JDialog {
 
 		HandlerProperties handlerProperties = new HandlerProperties(HandlerLanguage.language);
 		handlerProperties.load();
-		this.setTitle(handlerProperties.getProperty(ConstantsView.DEFAULT_TITLE_WIN_SELECTION));
+		// this.setTitle(handlerProperties.getProperty(ConstantsView.DEFAULT_TITLE_WIN_SELECTION));
 		this.labelSelecedOtherMAze.setText(handlerProperties.getProperty(ConstantsView.LABEL_SELECTED_OTHER_MAZE));
 		this.panelMediumLevel.setBorder(
 				BorderFactory.createTitledBorder(handlerProperties.getProperty(ConstantsView.DEFAULT_BORDER_TITLE)));

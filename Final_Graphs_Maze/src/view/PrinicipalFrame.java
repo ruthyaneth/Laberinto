@@ -29,6 +29,7 @@ public class PrinicipalFrame extends JFrame   {
 	private static final long serialVersionUID = 1L;
 	private Menu menuBar;
 	private ToolBar toolBar;
+	private WindowSelectionImage windowSelectionImage;
 
 	//-----Builder-------
 	
@@ -48,6 +49,8 @@ public class PrinicipalFrame extends JFrame   {
 		toolBar = new ToolBar(controller);
 		this.add(toolBar, BorderLayout.NORTH);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(ConstantsView.LOGO_APLICATION)));
+		windowSelectionImage = new WindowSelectionImage();
+		this.add(windowSelectionImage);
 	}
 	
 	//-----Methods------

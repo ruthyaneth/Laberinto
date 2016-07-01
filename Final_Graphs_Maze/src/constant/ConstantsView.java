@@ -18,8 +18,8 @@ public class ConstantsView {
 	/**
 	 * Constantes Frame Principal
 	 */
-	public static final int HEIGHT_WINDOW = 600;
-	public static final int WIDTH_WINDOW = 500;
+	public static final int HEIGHT_WINDOW = 700;
+	public static final int WIDTH_WINDOW = 900;
 	public static final String TITLE_APPLICATION = "GRAPHS_MAZE";
 	/**
 	 * Constantes MenuFile
