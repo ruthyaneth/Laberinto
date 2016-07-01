@@ -28,7 +28,6 @@ public class DialogHelpAbout extends JDialog {
 	private JScrollPane scrollPane;
 
 	public DialogHelpAbout() {
-
 		super();
 		this.setSize(ConstantsView.WIDTH_DIALOJ_ABOUT, ConstantsView.HEIGHT_DIALOG_ABOUT);
 		this.setLocationRelativeTo(null);

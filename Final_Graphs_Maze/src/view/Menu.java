@@ -100,6 +100,7 @@ public class Menu extends JMenuBar {
 		this.itemFileEditImage.setActionCommand(ConstantsListener.ITEM_FILE_EDIT_IMAGE);
 		this.itemFileEditImage.addActionListener(controller);
 		this.menuFile.add(itemFileEditImage);
+		this.menuFile.addSeparator();
 	}
 
 	private void addItemFileCloseApp() {

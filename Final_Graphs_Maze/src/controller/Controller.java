@@ -17,6 +17,7 @@ import view.PrinicipalFrame;
 import view.WindowSelectionImage;
 import view.CreateWindowMaze;
 import view.DialogHelpAbout;
+import view.DialogHowToUse;
 import view.PanelViewImage;
 
 /**
@@ -131,6 +132,9 @@ public class Controller implements ActionListener, Serializable {
 		case ConstantsListener.ITEM_ABOUT:
 			DialogHelpAbout dialogHelpAbout  = new DialogHelpAbout();
 			dialogHelpAbout.setVisible(true);
+			break;
+		case ConstantsListener.ITEM_HELP_HOW_TO_USE:
+			 new DialogHowToUse();
 			
 		}
 	}

@@ -88,4 +88,6 @@ public class ConstantsView {
 	public static final int WIDTH_DIALOJ_ABOUT = 600;
 	public static final int HEIGHT_DIALOG_ABOUT = 580;
 	public static final String INFO_ABOUT = "INFO_ABOUT";
+	public static final String TITLE_DIALOG_HOW_TO_USE = "TITLE_DIALOG_HOW_TO_USE";
+	
 }
