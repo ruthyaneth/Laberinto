@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -33,7 +34,6 @@ public class PrinicipalFrame extends JFrame   {
 	
 	public PrinicipalFrame(Controller controller) {
 		super();
-		
 		try {
 			changeLenguage();
 		} catch (IOException e) {
@@ -47,6 +47,7 @@ public class PrinicipalFrame extends JFrame   {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		toolBar = new ToolBar(controller);
 		this.add(toolBar, BorderLayout.NORTH);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(ConstantsView.LOGO_APLICATION)));
 	}
 	
 	//-----Methods------

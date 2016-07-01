@@ -63,7 +63,8 @@ public class ConstantsView {
 	public static final String  IMAGE_EDIT =  "/imagesSettings/editar.png";
 	public static final String  IMAGE_SOLVE =  "/imagesSettings/resover.png";
 	public static final String  IMAGE_EXIT =  "/imagesSettings/salir.png";
-	
+	public static final String LOGO_APLICATION = "/imagesSettings/maze.png";
+	public static final String IMAGE_ABOUT = "/imagesSettings/about.png";
 	
 	public static final String TITLE_PANEL_IMAGE = "Visualizacion_imagen";
 	

@@ -142,9 +142,10 @@ public class Menu extends JMenuBar {
 		this.add(menuHelp);
 	}
 	private void addItemAbout(){
-		itemHelpAbout = new JMenuItem();
-		itemHelpAbout.addActionListener(controller);
-		itemHelpAbout.setActionCommand(ConstantsListener.ITEM_ABOUT);
+		this.itemHelpAbout = new JMenuItem();
+		this.itemHelpAbout.addActionListener(controller);
+		this.itemHelpAbout.setActionCommand(ConstantsListener.ITEM_ABOUT);
+		this.itemHelpAbout.setIcon(new ImageIcon(getClass().getResource(ConstantsView.IMAGE_ABOUT)));
 		menuHelp.add(itemHelpAbout);
 	}
 	private void addItemHelpHowToUse(){
