@@ -1,8 +1,12 @@
 package view;
 
+import java.awt.Toolkit;
+
+import constant.ConstantsView;
+
 /**
  *
- * @author Jesus
+ * @author Ruth Rojas, Jenny Quesada
  */
 public class WinMain extends javax.swing.JFrame {
 
@@ -11,6 +15,7 @@ public class WinMain extends javax.swing.JFrame {
      */
     public WinMain() {
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(ConstantsView.LOGO_APLICATION)));
     }
 
     /**

@@ -4,6 +4,7 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -65,7 +66,7 @@ public class WindowSelectionImage extends JDialog {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(ConstantsView.LOGO_APLICATION)));
 	}
 
 	// ------Methods--------

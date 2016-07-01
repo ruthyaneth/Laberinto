@@ -10,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import config.HandlerLanguage;
 import constant.ConstantsListener;
@@ -41,8 +42,22 @@ public class Controller implements ActionListener, Serializable {
 	// ------Builder------
 
 	public Controller() {
-		loadConfiguration();
-		
+		 try {
+			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 loadConfiguration();
 	}
 
 	// -----Methods-----
@@ -75,8 +90,6 @@ public class Controller implements ActionListener, Serializable {
 		
 		this.windowSelection = new WindowSelectionImage();
 		this.windowSelection.setVisible(true);
-		
-		
 	}
 	public void changeToEnglish() {
 		HandlerLanguage handlerLanguage = new HandlerLanguage("language/config.ini");
@@ -130,12 +143,11 @@ public class Controller implements ActionListener, Serializable {
 			createWindow.generateMaze();
 			break;
 		case ConstantsListener.ITEM_ABOUT:
-			DialogHelpAbout dialogHelpAbout  = new DialogHelpAbout();
+			DialogHelpAbout dialogHelpAbout  = new DialogHelpAbout(frame);
 			dialogHelpAbout.setVisible(true);
 			break;
 		case ConstantsListener.ITEM_HELP_HOW_TO_USE:
-			 new DialogHowToUse();
-			
+			 new DialogHowToUse(frame);
 		}
 	}
 }

@@ -2,6 +2,7 @@
 /constant/
 /controller/
 /graph_maze/
+/imagesSettings/
 /img/
 /language/
 /logic/
@@ -10,4 +11,3 @@
 /resources/
 /structure/
 /view/
-/imagesSettings/

@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 import config.HandlerLanguage;
@@ -18,8 +19,8 @@ public class DialogHowToUse extends JDialog {
 	private static final long serialVersionUID = -8494982714203988239L;
 	private JTextArea areaInstructions;
 
-	public DialogHowToUse() {
-		super();
+	public DialogHowToUse(JFrame j) {
+		super(j );
 		this.setSize(ConstantsView.WIDTH_DIALOJ_ABOUT, 280);
 		this.setLocationRelativeTo(null);
 		addAreaInstructions();

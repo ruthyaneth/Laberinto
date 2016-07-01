@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -27,10 +28,10 @@ public class DialogHelpAbout extends JDialog {
 	private JTextArea textAreaInfo;
 	private JScrollPane scrollPane;
 
-	public DialogHelpAbout() {
-		super();
+	public DialogHelpAbout(JFrame j) {
+		super(j);
 		this.setSize(ConstantsView.WIDTH_DIALOJ_ABOUT, ConstantsView.HEIGHT_DIALOG_ABOUT);
-		this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(j);
 		addPanelIamges();
 		addLabelImagen1();
 		addLabelImagen2();
