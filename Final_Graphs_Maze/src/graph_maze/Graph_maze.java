@@ -12,6 +12,12 @@ import controller.Controller;
  */
 public class Graph_maze {
 	
+	//------Atributtes-------
+	
+	//-------Builder-------
+	
+	//-------Methods--------
+	
 	public static void main(String[] args) {
 		Controller controller = new Controller();
 		controller.show();

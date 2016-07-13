@@ -1,5 +1,4 @@
 package view;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -51,6 +50,7 @@ public class CreateWindowMaze  extends JDialog{
 	private Controller controller;
 	//Atributos de la linea 44 de la clase Proncipal del proyecto Maze
 	//Atributo grafo del proyecto Maze clase  Principal linea 56
+	
 	//------Builder------
 
 	public CreateWindowMaze(Controller controller) {
@@ -79,6 +79,7 @@ public class CreateWindowMaze  extends JDialog{
 	public void initializatePanelButton(){
 		this.panelDraw = new PanelDrawTablero();
 		this.panelDraw.setBorder(BorderFactory.createTitledBorder("Laberinto"));
+		this.panelDraw.addMouseListener(panelDraw.getMouserListener());
 		this.add(panelDraw,BorderLayout.CENTER);
 
 	}

@@ -5,7 +5,7 @@ package constant;
  * ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION.
  * PRESENTADO A: Ing Helver Valero.
  * PROGRAMACION III
- * Clase de constantes de ¿l manejador de eventos de los botones
+ * Clase de constantes de al manejador de eventos de los botones
  * @author  Jenny Quesada , Ruth Rojas
  */
 public class ConstantsListener {

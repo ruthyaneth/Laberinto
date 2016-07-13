@@ -11,12 +11,18 @@ import java.io.IOException;
  */
 public class HandlerLanguage {
 	
+	//-------Atributtes-------
+	
 	private String fileName;
 	public static String language = "undified";
+	
+	//-------Builder--------
 	
 	public HandlerLanguage(String fileName) {
 		this.fileName = fileName;
 	}
+	
+	//-------Methods--------
 	
 	public void loadLanguage() throws IOException{
 		
@@ -32,4 +38,6 @@ public class HandlerLanguage {
 		handlerProperties.save();
 	}
 
+	//-------Gets&&Setss-------
+	
 }

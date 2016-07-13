@@ -12,6 +12,7 @@ public class Node <T>{
 	private T info;
 	private Node<T> next;
 	private Node<T> previous;
+	public int f;
 
 	public Node(T info) {
 		this.info = info;

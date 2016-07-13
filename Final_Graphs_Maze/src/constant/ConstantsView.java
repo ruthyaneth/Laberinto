@@ -14,6 +14,7 @@ import config.HandlerProperties;
  */
 
 public class ConstantsView {
+	
 	//-----Atributtes------
 	/**
 	 * Constantes Frame Principal
@@ -21,6 +22,7 @@ public class ConstantsView {
 	public static final int HEIGHT_WINDOW = 700;
 	public static final int WIDTH_WINDOW = 900;
 	public static final String TITLE_APPLICATION = "GRAPHS_MAZE";
+	
 	/**
 	 * Constantes MenuFile
 	 */
@@ -33,13 +35,16 @@ public class ConstantsView {
 	public static final String NAME_MENU_LANGUAGE = "Language";
 	public static final String NAME_ITEM_LANGUAGE_SPANISH = "Spanish";
 	public static final String NAME_ITEM_LANGUAGE_ENGLISH = "English";
+	
 	/**
 	 * Constantes JFileChooserS
 	 */
 	public static final String TITLE_FILE_CHOOSER = "Seleccione_un_Laberinto_Ortogonal";
+	
 	/**
 	 * Constantes ToolBar
 	 */
+	
 	public static final String TOOL_BAR_TOOL_TIP_BUTTON_OPEN_IMAGE = "Open_Laberinto";
 	public static final String TOOL_BAR_TOOL_TIP_BUTTON_CREATE_IMAGE = "Create_Laberinto";
 	public static final String TOOL_BAR_TOOL_TIP_BUTTON_EDIT_IMAGE = "Edit_Image";
@@ -57,6 +62,7 @@ public class ConstantsView {
 	/**
 	 * Constantes de las imagenes del JmenuItem 
 	 */
+	
 	public static final String  IMAGE_CREATE =  "/imagesSettings/crear.png";
 	public static final String  IMAGE_OPEN =  "/imagesSettings/abrirI.png";
 	public static final String  IMAGE_CONFIGURATION =  "/imagesSettings/configuracion.png";

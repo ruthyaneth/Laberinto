@@ -10,11 +10,15 @@ package logic;
  */
 public class Box implements Comparable<Box>{
 
+	//-------Atributes-------
+	
 	private int number;
 	private boolean upperNeighbor; // Vecino superior
 	private boolean lowerNeighbor; //Vecino Inferior
 	private boolean leftNeighbor;//Vecino izquierdo
 	private boolean rihtNeighbor;//Vecino derecho;
+	
+	//-------Builder--------
 	
 	public Box(int n){
 		this.number=n;
@@ -24,10 +28,14 @@ public class Box implements Comparable<Box>{
 		this.rihtNeighbor=false;
 	}
 	
+	//-------Methods-------
+	
 	public boolean equals(Box c){
 		return this.number==c.getNumber();
 	}
 
+	//-------Gets&&Sets--------
+	
 	public int getNumber() {
 		return number;
 	}

@@ -1,5 +1,5 @@
 package logic;
-
+//------------------------GENERA LAS CUADRICULAS QUE LE INGRESE EL USUARIO-------------
 
 import java.io.File;
 import java.util.ArrayList;

@@ -313,44 +313,44 @@ public class WindowSelectionImage extends JPanel {
 	private void jButton1ActionPerformed(ActionEvent evt) {
 		if (jFileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
 			File f = jFileChooser.getSelectedFile();
-			new WinMaze(f, "Personalizado").setVisible(true);
+			new WindowMaze(f, "Personalizado").setVisible(true);
 		}
 	}
 
 	private void lf1MouseClicked(java.awt.event.MouseEvent evt) {
-		new WinMaze(getClass().getResource("/img/facil2.png").getFile(), "Facil").setVisible(true);
+		new WindowMaze(getClass().getResource("/img/facil2.png").getFile(), "Facil").setVisible(true);
 	}
 
 	private void lf2MouseClicked(java.awt.event.MouseEvent evt) {
-		new WinMaze(getClass().getResource("/img/facil2.png").getFile(), "Facil").setVisible(true);
+		new WindowMaze(getClass().getResource("/img/facil2.png").getFile(), "Facil").setVisible(true);
 	}
 
 	private void lf3MouseClicked(java.awt.event.MouseEvent evt) {
-		new WinMaze(getClass().getResource("/img/labN1.png").getFile(), "Facil").setVisible(true);
+		new WindowMaze(getClass().getResource("/img/labN1.png").getFile(), "Facil").setVisible(true);
 	}
 
 	private void li1MouseClicked(java.awt.event.MouseEvent evt) {
-		new WinMaze(getClass().getResource("/img/inter1.png").getFile(), "Intermedio").setVisible(true);
+		new WindowMaze(getClass().getResource("/img/inter1.png").getFile(), "Intermedio").setVisible(true);
 	}
 
 	private void li2MouseClicked(java.awt.event.MouseEvent evt) {
-		new WinMaze(getClass().getResource("/img/inter2.png").getFile(), "Intermedio").setVisible(true);
+		new WindowMaze(getClass().getResource("/img/inter2.png").getFile(), "Intermedio").setVisible(true);
 	}
 
 	private void li3MouseClicked(java.awt.event.MouseEvent evt) {
-		new WinMaze(getClass().getResource("/img/labN2.png").getFile(), "Intermedio").setVisible(true);
+		new WindowMaze(getClass().getResource("/img/labN2.png").getFile(), "Intermedio").setVisible(true);
 	}
 
 	private void ld1MouseClicked(java.awt.event.MouseEvent evt) {
-		new WinMaze(getClass().getResource("/img/dificil1.png").getFile(), "Dificil").setVisible(true);
+		new WindowMaze(getClass().getResource("/img/dificil1.png").getFile(), "Dificil").setVisible(true);
 	}
 
 	private void ld2MouseClicked(java.awt.event.MouseEvent evt) {
-		new WinMaze(createFile("/img/labN3.png"), "Dificil").setVisible(true);
+		new WindowMaze(createFile("/img/labN3.png"), "Dificil").setVisible(true);
 	}
 
 	private void ld3MouseClicked(java.awt.event.MouseEvent evt) {
-		new WinMaze(getClass().getResource("/img/labN4.png").getFile(), "Dificil").setVisible(true);
+		new WindowMaze(getClass().getResource("/img/labN4.png").getFile(), "Dificil").setVisible(true);
 	}
 
 	protected ImageIcon createImageIcon(String path) {

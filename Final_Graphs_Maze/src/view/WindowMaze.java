@@ -14,18 +14,18 @@ import constant.ConstantsView;
 import logic.Busqueda;
 
 
-public class WinMaze extends JFrame {
+public class WindowMaze extends JFrame {
 
 	private static final long serialVersionUID = -416374509958328382L;
 	
-	public WinMaze(File archivo, String tipo) {
+	public WindowMaze(File archivo, String tipo) {
     	super();
         initComponents();
         myInit(archivo, tipo);
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(ConstantsView.LOGO_APLICATION)));
     }
 
-    public WinMaze(String archivo, String tipo) {
+    public WindowMaze(String archivo, String tipo) {
         this(new File(archivo), tipo);
     }
 
@@ -117,7 +117,7 @@ public class WinMaze extends JFrame {
                         panelImg.updateUI();
                         JOptionPane.showMessageDialog(yo(), "Terminado :D", "Fin", JOptionPane.INFORMATION_MESSAGE);
                     } catch (Exception ex) {
-                        Logger.getLogger(WinMaze.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(WindowMaze.class.getName()).log(Level.SEVERE, null, ex);
                         JOptionPane.showMessageDialog(yo(), ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
@@ -151,7 +151,7 @@ public class WinMaze extends JFrame {
         try {
             panelImg.imagen = ImageIO.read(file);
         } catch (IOException ex) {
-            Logger.getLogger(WinMaze.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WindowMaze.class.getName()).log(Level.SEVERE, null, ex);
         }
         jPanel1.add(panelImg);
 

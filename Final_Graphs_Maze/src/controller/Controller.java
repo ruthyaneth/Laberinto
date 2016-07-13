@@ -19,7 +19,6 @@ import view.WindowSelectionImage;
 import view.CreateWindowMaze;
 import view.DialogHelpAbout;
 import view.DialogHowToUse;
-import view.PanelViewImage;
 
 /**
  * UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA FACULTAD DE INGENIERIA.
@@ -35,7 +34,6 @@ public class Controller implements ActionListener, Serializable {
 
 	private HandlerLanguage handlerLanguage;
 	private PrinicipalFrame frame;
-	private PanelViewImage provicional;
 	private CreateWindowMaze createWindow;
 	private WindowSelectionImage windowSelection;
 
@@ -45,16 +43,12 @@ public class Controller implements ActionListener, Serializable {
 		 try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		 loadConfiguration();
@@ -128,7 +122,6 @@ public class Controller implements ActionListener, Serializable {
 			showWindowCreate();
 			break;
 		case ConstantsListener.ITEM_FILE_EDIT_IMAGE:
-			System.out.println("edit");
 			break;
 		case ConstantsListener.ITEM_FILE_CLOSE_APP:
 			System.exit(0);

@@ -5,31 +5,37 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import view.PanelImg;
 /**
- * CCCC
- * @author Jenny Quesada , Ruth Rojas
- *
+ * UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA
+ * FACULTAD DE INGENIERIA.
+ * ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION.
+ * PRESENTADO A: Ing Helver Valero.
+ * PROGRAMACION III
+ * Clase  de busqueda donde busca el camino de salida del laberinto.
+ * @author Jenny Quesada, Ruth Rojas
  */
 public class Busqueda {
 
+	//------Atributtes-------
+	
     private PanelImg panel;
     private final BufferedImage imagen;
     private int mObstaculos[][], x1, x2, y1, y2;
     private ListaBusqueda ltsOpen;
     private ListaBusqueda ltsClose;
 
+    //------Builder-------
+    
+    
     public Busqueda(PanelImg panelImg) throws Exception {
         if (panelImg == null) {
             throw new Exception("Problema con origen de datos");
         }
-
         if (panelImg.imagen == null) {
             throw new Exception("Debe primero cargar una imagen");
         }
-
         if (panelImg.setPuntos != 2) {
             throw new Exception("Debe colocar los puntos de inicio y final");
         }
-
         this.imagen = panelImg.imagen;
         this.panel = panelImg;
 
@@ -46,8 +52,9 @@ public class Busqueda {
         System.out.println("x2: " + x2 + " y2: " + y2);
     }
 
+    //-------Methods-------
+    
     private void crearMatriz() {
-        //System.out.println("Width: " + imagen.getWidth() + " Height: " + imagen.getHeight() + " Total: " + (imagen.getWidth() * imagen.getHeight()));
         mObstaculos = new int[imagen.getWidth()][imagen.getHeight()];
 
         for (int i = 0; i < imagen.getWidth(); i++) {
@@ -62,11 +69,13 @@ public class Busqueda {
         }
     }
 
+    
     private boolean puntosOk() {
         return mObstaculos[x1][y1] == 0 && mObstaculos[x2][y2] == 0;
     }
 
-    private boolean celdaValida(Celda c) {
+    
+    private boolean celdaValida(Direction c) {
         if (c.x >= 0 && c.x < mObstaculos.length && c.y >= 0 && c.y < mObstaculos[0].length) {
             if(mObstaculos[c.x][c.y] == 0){
                 return true;
@@ -82,7 +91,7 @@ public class Busqueda {
         return 10 * (Math.abs(y2 - y) + Math.abs(x2 - x));
     }
     
-    private void pintarRuta(Celda c){
+    private void pintarRuta(Direction c){
         while(c.padre != null){
             imagen.setRGB(c.x, c.y, Color.BLUE.getRGB());
             c = c.padre;
@@ -91,28 +100,28 @@ public class Busqueda {
 
     private boolean aEstrella() {        
         //Agregar origen a lista abierta
-        Celda origen = new Celda(null, x1, y1, 0, 0, calcularH(x1, y1));
+        Direction origen = new Direction(null, x1, y1, 0, 0, calcularH(x1, y1));
         ltsOpen.add(origen);
 
         //Si la lista esta vacia no hay solucion
         while (!ltsOpen.esVacia() && panel.detener == false) {
             //Get primer elemento de lista abierta y pasar a cerrada
-            Celda c = ltsOpen.getMenor();
+            Direction c = ltsOpen.getMenor();
             ltsClose.add(c);
 
             //Crear listas de adyacentes con factores
-            LinkedList<Celda> adyacentes = new LinkedList<>();
-            adyacentes.add(new Celda(c, c.x - 1, c.y - 1, 0, c.g + 14, 0));
-            adyacentes.add(new Celda(c, c.x, c.y - 1, 0, c.g + 10, 0));
-            adyacentes.add(new Celda(c, c.x + 1, c.y - 1, 0, c.g + 14, 0));
-            adyacentes.add(new Celda(c, c.x - 1, c.y, 0, c.g + 10, 0));
-            adyacentes.add(new Celda(c, c.x + 1, c.y, 0, c.g + 10, 0));
-            adyacentes.add(new Celda(c, c.x - 1, c.y + 1, 0, c.g + 14, 0));
-            adyacentes.add(new Celda(c, c.x, c.y + 1, 0, c.g + 10, 0));
-            adyacentes.add(new Celda(c, c.x + 1, c.y + 1, 0, c.g + 14, 0));
+            LinkedList<Direction> adyacentes = new LinkedList<>();
+            adyacentes.add(new Direction(c, c.x - 1, c.y - 1, 0, c.g + 14, 0));
+            adyacentes.add(new Direction(c, c.x, c.y - 1, 0, c.g + 10, 0));
+            adyacentes.add(new Direction(c, c.x + 1, c.y - 1, 0, c.g + 14, 0));
+            adyacentes.add(new Direction(c, c.x - 1, c.y, 0, c.g + 10, 0));
+            adyacentes.add(new Direction(c, c.x + 1, c.y, 0, c.g + 10, 0));
+            adyacentes.add(new Direction(c, c.x - 1, c.y + 1, 0, c.g + 14, 0));
+            adyacentes.add(new Direction(c, c.x, c.y + 1, 0, c.g + 10, 0));
+            adyacentes.add(new Direction(c, c.x + 1, c.y + 1, 0, c.g + 14, 0));
 
             //Verificar adyacientes
-            for (Celda a : adyacentes) {
+            for (Direction a : adyacentes) {
                 //Si es una celda validad
                 if (celdaValida(a)) {
 
@@ -127,7 +136,7 @@ public class Busqueda {
                         //Si esta en la lista abierta
                         if (ltsOpen.contieneElemento(a)) {
                             //Verificamos si la g es mejor para ser remplazada
-                            Celda c2 = ltsOpen.get(a.x + "," + a.y);
+                            Direction c2 = ltsOpen.get(a.x + "," + a.y);
                             if (c2 != null && a.g < c2.g) {
                                 //Remover y recalcular
                                 ltsOpen.getRemove(a.x + "," + a.y);

@@ -10,31 +10,31 @@ import java.util.LinkedList;
 public class ListaBusqueda {
 
     private ListaAscendente lista;
-    private HashMap<String, Celda> hash;
+    private HashMap<String, Direction> hash;
 
     public ListaBusqueda() {
         lista = new ListaAscendente();
         hash = new HashMap<>();
     }
 
-    public boolean add(Celda nuevo) {
+    public boolean add(Direction nuevo) {
         //Verificar que no existe la celda
         String llave = nuevo.x + "," + nuevo.y;
         if(hash.containsKey(llave)){
             return false;
         }
         
-        lista.addOrdenado(nuevo);
+        lista.addOrdenado(nuevo); // 
         hash.put(llave, nuevo);
         
         return true;
     }
     
-    public Celda getMenor(){
+    public Direction getMenor(){
         if(!lista.isEmpty()){
-            Celda c = lista.getFirst();
+            Direction c = lista.getFirst();
             
-            lista.removeFirst();
+            lista.removeFirst(); // quita el nodo al principio de la lista
             hash.remove(c.x + "," + c.y);
             
             return c;
@@ -43,12 +43,13 @@ public class ListaBusqueda {
         return null;
     }
     
-    public Celda getRemove(String llave){
+    public Direction getRemove(String llave){
         if(!lista.isEmpty()){
-            Celda c = hash.get(llave);
+            Direction c = hash.get(llave);
             
             //System.out.println("Lista AN: " + lista.size());
-            lista.remove(c);
+            lista.remove(c); //elimina el elemento que se pasa por parametro.
+            
             hash.remove(llave);
             //System.out.println("Lista DE: " + lista.size());
             
@@ -58,15 +59,15 @@ public class ListaBusqueda {
         return null;
     }
     
-    public Celda get(String llave){
-        if(!lista.isEmpty()){
+    public Direction get(String llave){
+        if(!lista.isEmpty()){ // metodo de si esta vacio 
             return hash.get(llave);
         }
         
         return null;
     }
     
-    public boolean contieneElemento(Celda c){
+    public boolean contieneElemento(Direction c){
         return hash.containsKey(c.x + "," + c.y);
     }
     
@@ -74,12 +75,12 @@ public class ListaBusqueda {
         return lista.isEmpty();
     }
 
-    private class ListaAscendente extends LinkedList<Celda> {
+    private class ListaAscendente extends LinkedList<Direction> {
 
-        public void addOrdenado(Celda nuevo) {
+        public void addOrdenado(Direction nuevo) {
             boolean agregado = false;
             for (int i = 0; i < this.size() && agregado == false; i++) {
-                Celda c = this.get(i);
+                Direction c = this.get(i); // devuelve un onjeto en la posion especificada.
 
                 if (c.f >= nuevo.f) {
                     this.add(i, nuevo);
