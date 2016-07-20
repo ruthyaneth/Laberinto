@@ -1,0 +1,14 @@
+Graph Maze permite solucionar laberintos
+Ya sea alguno de los que estan predeterminados por la aplicacion
+o cualquiera que seleccione el usuario a través de una imagen.
+
+ 																		Como usarla 	
+ 					En el menu y la barra de herramientas puede escoger la opcion que desee
+ 
+ 				1 Abrir un laberinto 
+ 						2 crear un laberinto 
+ 
+ 												Para abrir un laberinto seleccione la imagen ya sea una de las que estan predeterminadas o cualquier
+ 	otra que este en su computadora.				 Seleccione el punto de inicio y el punto final
+ 				SOLUCIONAR para que busque el camino 
+ 				DETENER para ver el camino encontrado hasta el momento

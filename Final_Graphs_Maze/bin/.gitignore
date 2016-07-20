@@ -2,13 +2,8 @@
 /constant/
 /controller/
 /graph_maze/
-/imagesSettings/
-/img/
-/language/
 /logic/
-/model/
 /persistence/
-/resources/
 /structure/
-/view/
 /util/
+/view/

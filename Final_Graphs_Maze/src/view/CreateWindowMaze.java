@@ -21,6 +21,7 @@ import constant.ConstantsView;
 import controller.Controller;
 import logic.Circle;
 import logic.GenerateBox;
+import logic.Grafo;
 import persistence.FileUtil;
 
 /**
@@ -31,6 +32,7 @@ import persistence.FileUtil;
  * PROGRAMACION III
  * Clase donde se generara el laberinto que el usuario ingrese con su ancho y su alto 
  * @author  Jenny Quesada , Ruth Rojas
+ * MIRAR ESTA CLASE QUE NO ESTA HACIENDO NADA 
  */
 public class CreateWindowMaze  extends JDialog{
 
@@ -38,8 +40,8 @@ public class CreateWindowMaze  extends JDialog{
 	
 	private boolean pintarLaberinto = false;
 	//-------------------
-	private  PanelCreateButton panelCreateButton;
-	private PanelDrawTablero panelDraw;
+	private PanelCreateButton panelCreateButton;
+	private PanelDrawBoard panelDraw;
 	private int ancho_celda = 20;
 	private int alto_celda = 20;
 	private int radio_circulo= 30;
@@ -48,6 +50,7 @@ public class CreateWindowMaze  extends JDialog{
 	private ResourceBundle rb = null;
 	private GenerateBox generate;
 	private Controller controller;
+	private Grafo grafo;
 	//Atributos de la linea 44 de la clase Proncipal del proyecto Maze
 	//Atributo grafo del proyecto Maze clase  Principal linea 56
 	
@@ -61,8 +64,8 @@ public class CreateWindowMaze  extends JDialog{
 	public void load(Controller controller){
 		
 		initializateThis();
-		initializatePanelButton();
-		initializatePanelDraw(controller);
+		initializatePanelButton(controller);
+		initializatePanelDraw();
 		initializateOthers();
 	}
 
@@ -76,18 +79,19 @@ public class CreateWindowMaze  extends JDialog{
 		this.setLocationRelativeTo(null);
 	}
 
-	public void initializatePanelButton(){
-		this.panelDraw = new PanelDrawTablero();
-		this.panelDraw.setBorder(BorderFactory.createTitledBorder("Laberinto"));
-		this.panelDraw.addMouseListener(panelDraw.getMouserListener());
-		this.add(panelDraw,BorderLayout.CENTER);
-
-	}
-
-	public void initializatePanelDraw(Controller controller){
+	public void initializatePanelButton(Controller controller){
+		
 		this.panelCreateButton = new PanelCreateButton(controller);
 		this.panelCreateButton.setBorder(BorderFactory.createTitledBorder("Opciones"));
 		this.add(panelCreateButton,BorderLayout.SOUTH);
+
+	}
+
+	public void initializatePanelDraw(){
+		this.panelDraw = new PanelDrawBoard(this,3,2 );
+//		this.panelDraw.setBorder(BorderFactory.createTitledBorder("Laberinto"));
+//		this.add(panelDraw,BorderLayout.CENTER);
+	
 	}
 
 	private int[][] preguntarFilasColumnas(){
@@ -156,7 +160,7 @@ public class CreateWindowMaze  extends JDialog{
 		}
 
 		if(!openEditor){
-			drawTablero();
+//			drawTablero();
 			repaint();
 		}else{
 			//337
@@ -176,13 +180,11 @@ public class CreateWindowMaze  extends JDialog{
 	}
 
 	public void generateMaze(){// Metodo para generar el laberinto 
-		System.out.println("Juan diego ");
+		
 		int[][] datos = preguntarFilasColumnas();
 		if(datos != null){
-			generate.setRow(datos[0][0]);
-			generate.setColumn(datos[0][0]);
-			generate.initializate();
-			generate.generateBox();
+			panelDraw = new PanelDrawBoard(this, datos[0][0], datos[0][1]);
+			this.panelDraw.setVisible(true);
 			
 		}
 	}
@@ -214,15 +216,25 @@ public class CreateWindowMaze  extends JDialog{
 					panelDraw.addLine(columnas*ancho_celda,fila*alto_celda,columnas*ancho_celda,(fila+1)*alto_celda);
 					
 					if(numero==inicio){
-						panelDraw.setInicio(new Circle(columna*ancho_celda+(ancho_celda/2)-radio_circulo,fila*alto_celda+(alto_celda/2)-radio_circulo,radio_circulo));
+						panelDraw.setCircleEnd(new Circle(columna*ancho_celda+(ancho_celda/2)-radio_circulo,fila*alto_celda+(alto_celda/2)-radio_circulo,radio_circulo));
 					}
 					if(numero==fin){
-						panelDraw.setFin(new Circle(columna*ancho_celda+(ancho_celda/2)-radio_circulo,fila*alto_celda+(alto_celda/2)-radio_circulo,radio_circulo));
+						panelDraw.setCircleInit(new Circle(columna*ancho_celda+(ancho_celda/2)-radio_circulo,fila*alto_celda+(alto_celda/2)-radio_circulo,radio_circulo));
 					}
 				}
 			}
 		}
 
 	}
+
+	public PanelDrawBoard getPanelDraw() {
+		return panelDraw;
+	}
+
+	public void setPanelDraw(PanelDrawBoard panelDraw) {
+		this.panelDraw = panelDraw;
+	}
+	
+	
 }
 

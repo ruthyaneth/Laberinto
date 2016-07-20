@@ -65,7 +65,7 @@ public class Controller implements ActionListener, Serializable {
 	public void showWindowCreate() {
 
 		this.createWindow = new CreateWindowMaze(this);
-		this.createWindow.setVisible(true);
+		this.createWindow.generateMaze();
 	}
 
 	public void loadConfiguration() {
@@ -133,7 +133,8 @@ public class Controller implements ActionListener, Serializable {
 			changeToEnglish();
 			break;
 		case ConstantsListener.CREATE_MAZE :
-			createWindow.generateMaze();
+			
+			
 			break;
 		case ConstantsListener.ITEM_ABOUT:
 			DialogHelpAbout dialogHelpAbout  = new DialogHelpAbout(frame);
