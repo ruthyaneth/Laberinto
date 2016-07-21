@@ -17,9 +17,19 @@ import javax.swing.border.LineBorder;
 import config.HandlerLanguage;
 import config.HandlerProperties;
 import constant.ConstantsView;
-
+/**
+ * UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA
+ * FACULTAD DE INGENIERIA.
+ * ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION.
+ * PRESENTADO A: Ing Helver Valero.
+ * PROGRAMACION III
+ * Clase estara las opciones de ayuda para el usuario.
+ * @author  Jenny Quesada , Ruth Rojas 
+ */
 public class DialogHelpAbout extends JDialog {
 
+	//-------Atributtes-------
+	
 	private static final long serialVersionUID = 7866298941041835837L;
 	private JPanel panelImages;
 	private JLabel labelImagen1;
@@ -28,10 +38,12 @@ public class DialogHelpAbout extends JDialog {
 	private JTextArea textAreaInfo;
 	private JScrollPane scrollPane;
 
-	public DialogHelpAbout(JFrame j) {
-		super(j);
+	//-----Builder------
+	
+	public DialogHelpAbout(JFrame frame) {
+		super(frame);
 		this.setSize(ConstantsView.WIDTH_DIALOJ_ABOUT, ConstantsView.HEIGHT_DIALOG_ABOUT);
-		this.setLocationRelativeTo(j);
+		this.setLocationRelativeTo(frame);
 		addPanelIamges();
 		addLabelImagen1();
 		addLabelImagen2();
@@ -44,19 +56,23 @@ public class DialogHelpAbout extends JDialog {
 		}
 	}
 	
+	//-------Methods-------
+	
 	private void addPanelIamges(){
 		
 		panelImages = new JPanel();
 		panelImages.setBorder(new LineBorder(Color.decode("#6A0888")));
 		panelImages.setBackground(Color.decode("#6E6E6E"));
-		this.add(panelImages, BorderLayout.WEST);
-		
+		this.add(panelImages, BorderLayout.WEST);	
 	}
+	
 	private void addPanelInfo(){
+		
 		panelInfo = new JPanel();
 		panelInfo.setBackground(Color.decode("#424242"));
 		this.add(panelInfo, BorderLayout.CENTER);
 	}
+	
 	private void addLabelImagen1(){
 		
 		labelImagen1 = new JLabel(" ");
@@ -66,6 +82,7 @@ public class DialogHelpAbout extends JDialog {
 	}
 	
 	private void addFieldInfo(){
+		
 		textAreaInfo = new JTextArea(10,10);
 		scrollPane = new JScrollPane(textAreaInfo);
 		this.add(scrollPane);
@@ -76,6 +93,7 @@ public class DialogHelpAbout extends JDialog {
 		textAreaInfo.setBackground(Color.decode("#151515"));
 		textAreaInfo.setForeground( Color.decode("#FAFAFA"));
 	}
+	
 	private void addLabelImagen2(){
 		
 		labelImagen2 = new JLabel();

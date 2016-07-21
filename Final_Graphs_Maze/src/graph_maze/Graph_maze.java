@@ -1,6 +1,7 @@
 package graph_maze;
 
 import controller.Controller;
+import view.WindowSplash;
 /**
  * UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA
  * FACULTAD DE INGENIERIA.
@@ -19,8 +20,11 @@ public class Graph_maze {
 	//-------Methods--------
 	
 	public static void main(String[] args) {
-		Controller controller = new Controller();
-		controller.show();
+//		Controller controller = new Controller();
+//		controller.show();
+		
+		WindowSplash windowSplah= new WindowSplash();
+		windowSplah.setVisible(true);
 		
 	}
 }

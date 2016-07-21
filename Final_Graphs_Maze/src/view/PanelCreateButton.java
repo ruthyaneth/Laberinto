@@ -17,15 +17,12 @@ import controller.Controller;
  * PRESENTADO A: Ing Helver Valero.
  * PROGRAMACION III
  * Clase del panel donde se encuntra las opciones de dibujar o resolver  el laberinto
- * @author Adrian Parra, Jenny Quesada, Daniel Reyes , Ruth Rojas
+ * @author  Jenny Quesada, Ruth Rojas
  */
 public class PanelCreateButton extends JPanel {
 
 	//------Atributtes-------
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JButton buttonCreate;
 	private JButton buttonSolve;
@@ -54,7 +51,7 @@ public class PanelCreateButton extends JPanel {
 	public void initializateButtonCreate(Controller controller){
 		this.buttonCreate = new JButton(ConstantsView.DEFAULT_BUTTON_CREATE);
 		this.buttonCreate.setIcon(new ImageIcon(getClass().getResource(ConstantsView.IMAGE_CREATE)));
-		this.buttonCreate.setActionCommand(ConstantsListener.CREATE_MAZE);
+		this.buttonCreate.setActionCommand(ConstantsListener.EDIT_MAZE_PATH);
 		this.buttonCreate.addActionListener(controller);
 		this.add(buttonCreate);
 	}
@@ -69,6 +66,14 @@ public class PanelCreateButton extends JPanel {
 		this.buttonClose = new JButton(ConstantsView.DEFAULT_BUTTON_CLOSE);
 		this.buttonClose.setIcon(new ImageIcon(getClass().getResource(ConstantsView.IMAGE_EXIT)));
 		this.add(buttonClose);
+	}
+
+	public JButton getButtonCreate() {
+		return buttonCreate;
+	}
+
+	public void setButtonCreate(JButton buttonCreate) {
+		this.buttonCreate = buttonCreate;
 	}
 
 	//-------Gets&Sets-------

@@ -22,6 +22,7 @@ import controller.Controller;
  * Clase  Menu donde estan la opciones de la aplicacion. 
  * @author Adrian Parra, Jenny Quesada, Daniel Reyes , Ruth Rojas
  */
+
 public class Menu extends JMenuBar {
 
 	//-----Atributtes------
@@ -40,6 +41,7 @@ public class Menu extends JMenuBar {
 	private JMenu menuHelp;
 	private JMenuItem itemHelpAbout;
 	private JMenuItem itemHelpHowToUse;
+	
 	//-----Builder-----
 
 	public Menu(Controller controller) {
@@ -79,7 +81,7 @@ public class Menu extends JMenuBar {
 		this.itemFileOpenImage = new JMenuItem();
 		this.itemFileOpenImage.setIcon(new ImageIcon(getClass().getResource(ConstantsView.IMAGE_OPEN)));
 		this.itemFileOpenImage.setText(ConstantsView.NAME_ITEM_FILE_OPEN_IMAGE);
-		this.itemFileOpenImage.setActionCommand(ConstantsListener.ITEM_FILE_OPEN_IMAGE);
+		this.itemFileOpenImage.setActionCommand(ConstantsListener.ITEM);
 		this.itemFileOpenImage.addActionListener(controller);
 		this.menuFile.add(itemFileOpenImage);
 	}

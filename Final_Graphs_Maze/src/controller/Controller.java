@@ -9,16 +9,20 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import config.HandlerLanguage;
 import constant.ConstantsListener;
 import view.PrinicipalFrame;
-import view.WindowSelectionImage;
+import view.WinMaze;
+import view.WinSeleccion;
 import view.CreateWindowMaze;
 import view.DialogHelpAbout;
 import view.DialogHowToUse;
+import view.PanelCreateButton;
+import view.PanelDrawBoard;
 
 /**
  * UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA FACULTAD DE INGENIERIA.
@@ -28,18 +32,28 @@ import view.DialogHowToUse;
  * Clase donde se encuenta el manejador de eventos
  * @author Jenny Quesada , Ruth Rojas
  */
-public class Controller implements ActionListener, Serializable {
+public class Controller implements ActionListener {
 
 	// ------Atributtes-----
 
 	private HandlerLanguage handlerLanguage;
 	private PrinicipalFrame frame;
 	private CreateWindowMaze createWindow;
-	private WindowSelectionImage windowSelection;
+	private PanelDrawBoard panelDraw;
+	private PanelCreateButton panelButtons;
+	private WinSeleccion maze;
 
 	// ------Builder------
+	
+	public void Image(){
+		
+		maze = new WinSeleccion();
+		maze.setVisible(true);
+		
+	}
 
 	public Controller() {
+		panelButtons = new PanelCreateButton(this);
 		 try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
 		} catch (ClassNotFoundException e) {
@@ -65,7 +79,7 @@ public class Controller implements ActionListener, Serializable {
 	public void showWindowCreate() {
 
 		this.createWindow = new CreateWindowMaze(this);
-		this.createWindow.generateMaze();
+		this.createWindow.generateMaze(this);
 	}
 
 	public void loadConfiguration() {
@@ -82,9 +96,8 @@ public class Controller implements ActionListener, Serializable {
 	
 	public void showWindowSelection(){
 		
-		this.windowSelection = new WindowSelectionImage();
-		this.windowSelection.setVisible(true);
 	}
+	
 	public void changeToEnglish() {
 		HandlerLanguage handlerLanguage = new HandlerLanguage("language/config.ini");
 		try {
@@ -113,13 +126,14 @@ public class Controller implements ActionListener, Serializable {
 
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		switch (e.getActionCommand()) {
+	public void actionPerformed(ActionEvent event) {
+		switch (event.getActionCommand()) {
 		case ConstantsListener.ITEM_FILE_OPEN_IMAGE:
 			showWindowSelection();
 			break;
 		case ConstantsListener.ITEM_FILE_CREATE_IMAGE:
 			showWindowCreate();
+			this.frame.setVisible(false);
 			break;
 		case ConstantsListener.ITEM_FILE_EDIT_IMAGE:
 			break;
@@ -132,9 +146,20 @@ public class Controller implements ActionListener, Serializable {
 		case ConstantsListener.ITEM_FILE_LANGUAGE_ENGLISH:
 			changeToEnglish();
 			break;
-		case ConstantsListener.CREATE_MAZE :
+		case ConstantsListener.ITEM :
+			Image();
+			break;
+		case ConstantsListener.EDIT_MAZE_PATH:
 			
+			System.out.println("HolaMundo");
+			panelDraw = new PanelDrawBoard();
 			
+				System.out.println("***********+");
+				panelDraw.savePath(this);
+				System.out.println("AHI POCO A POC O VAMOS ");	
+				panelDraw.setVisible(false);
+			
+//			JOptionPane.showMessageDialog(null, "Vamos Bien");
 			break;
 		case ConstantsListener.ITEM_ABOUT:
 			DialogHelpAbout dialogHelpAbout  = new DialogHelpAbout(frame);
@@ -142,6 +167,8 @@ public class Controller implements ActionListener, Serializable {
 			break;
 		case ConstantsListener.ITEM_HELP_HOW_TO_USE:
 			 new DialogHowToUse(frame);
+			 break;
+		
 		}
 	}
 }

@@ -1,9 +1,5 @@
-/config/
+/view/
 /constant/
+/imagesSettings/
 /controller/
 /graph_maze/
-/logic/
-/persistence/
-/structure/
-/util/
-/view/

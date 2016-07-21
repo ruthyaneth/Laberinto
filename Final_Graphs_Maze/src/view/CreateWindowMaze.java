@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JWindow;
 
@@ -22,6 +24,7 @@ import controller.Controller;
 import logic.Circle;
 import logic.GenerateBox;
 import logic.Grafo;
+import logic.Nodo;
 import persistence.FileUtil;
 
 /**
@@ -34,7 +37,7 @@ import persistence.FileUtil;
  * @author  Jenny Quesada , Ruth Rojas
  * MIRAR ESTA CLASE QUE NO ESTA HACIENDO NADA 
  */
-public class CreateWindowMaze  extends JDialog{
+public class CreateWindowMaze  extends JFrame{
 
 	//------Atributtes------
 	
@@ -58,13 +61,14 @@ public class CreateWindowMaze  extends JDialog{
 
 	public CreateWindowMaze(Controller controller) {
 		load(controller);
+		this.setBackground(Color.black);
 	}
 
 	//------Methods------
 	public void load(Controller controller){
 		
 		initializateThis();
-		initializatePanelButton(controller);
+//		initializatePanelButton(controller);
 		initializatePanelDraw();
 		initializateOthers();
 	}
@@ -88,7 +92,7 @@ public class CreateWindowMaze  extends JDialog{
 	}
 
 	public void initializatePanelDraw(){
-		this.panelDraw = new PanelDrawBoard(this,3,2 );
+//		this.panelDraw = new PanelDrawBoard(this,3,2 );
 //		this.panelDraw.setBorder(BorderFactory.createTitledBorder("Laberinto"));
 //		this.add(panelDraw,BorderLayout.CENTER);
 	
@@ -125,71 +129,75 @@ public class CreateWindowMaze  extends JDialog{
 	 * Metodo que me toca mirar algunas cosas que no pienso que vaya ahi 
 	 */
 
-	public void read(InputStream input , String file , boolean openEditor){
-
-		String line = "";
-		BufferedReader buffer;
-		//me falta mete la parte del grafo 
-		pintarLaberinto =! openEditor;
+	public void leerArchivo(InputStream inputStream,String archivo,boolean abrirEditor){
+		System.out.println("HOLA MUNDO COMO VAS HOY");
+		String linea="";
+		BufferedReader br;
+		grafo=new Grafo();
+		pintarLaberinto=!abrirEditor;
 		try {
-			buffer = new BufferedReader(new InputStreamReader(input));
-			filas = Integer.parseInt(buffer.readLine());
-			columnas = Integer.parseInt(buffer.readLine());
-			inicio = Integer.parseInt(buffer.readLine());
-			fin = Integer.parseInt(buffer.readLine());
-			int total = filas* columnas ;
-			nodos = new int[total][total]; 
-			//Nodo linea 308 clase principal del proyecto Maze
-			for (int i = 0; i < total; i++) {
-				line = buffer.readLine();
-				String[] numeros = line.trim().split(" ") ; // BUSCAR QUE ES UN TRIM 
-				int nodoNumber = Integer.parseInt(numeros[0]);
-				//Linea de atributo de Nodo linea 314 clase principal
-				for (int j = 0; j < numeros.length; j++) {
+			br = new BufferedReader(new InputStreamReader(inputStream));
+			filas=Integer.parseInt(br.readLine());
+			columnas=Integer.parseInt(br.readLine());
+			inicio=Integer.parseInt(br.readLine());
+			fin=Integer.parseInt(br.readLine());
+			int total=filas*columnas;
+			nodos=new int[total][total];
+			Nodo nuevo=null,vecinoTemp=null;
+			for(int i=0;i<total;i++){
+				linea=br.readLine();
+				String[] numeros=linea.trim().split(" ");
+
+				int nodoNumero=Integer.parseInt(numeros[0]);
+
+				nuevo=grafo.procesarAgregar(nodoNumero);
+
+				for(int j=1;j<numeros.length;j++){
 					nodos[i][Integer.parseInt(numeros[j])]=1;
-					//318
-					int nVecinos = Integer.parseInt(numeros[j]);
-					//322
-					//323
+					vecinoTemp=null;
+
+					int nVecino=Integer.parseInt(numeros[j]);
+
+					vecinoTemp=grafo.procesarAgregar(nVecino);
+					nuevo.getVecinos().add(vecinoTemp);
 				}
 			}
 		} catch (NumberFormatException e) {
-			util.showMessagger((Component) this,"Mensaje  de error archivo sintaxis ");
-		}catch (IOException e) {
-			util.showMessagger((Component) this,util.mesagge("Error de archivo", new Object[]{file}));
+			System.out.println("Error de sintaxis");
+		} catch (IOException e) {
+			System.out.println("Archivo No leido");
 		}
 
-		if(!openEditor){
-//			drawTablero();
-			repaint();
+		if(!abrirEditor){
+			drawTablero();
+//			repaint();
 		}else{
-			//337
-			//338
+			panelDraw=new PanelDrawBoard(this,filas, columnas,inicio,fin,grafo);
+			panelDraw.setVisible(true);
 		}
-
-
 	}
+	
 
 	public void readFile(File file , boolean openEditor){
-
 		try {
-			this.read(new FileInputStream(file), file.getName(), openEditor);
+			this.leerArchivo(new FileInputStream(file), file.getName(), openEditor);
 		} catch (FileNotFoundException e) {
 			util.showMessagger((Component) this, "Archivo no existe");
 		}
 	}
 
-	public void generateMaze(){// Metodo para generar el laberinto 
+	public void generateMaze(Controller controller){// Metodo para generar el laberinto 
 		
 		int[][] datos = preguntarFilasColumnas();
 		if(datos != null){
-			panelDraw = new PanelDrawBoard(this, datos[0][0], datos[0][1]);
+			panelDraw = new PanelDrawBoard(this, datos[0][0], datos[0][1], controller);
 			this.panelDraw.setVisible(true);
 			
 		}
 	}
 
 	public void drawTablero(){ //Metodo que dibuja el tablero
+		panelDraw = new PanelDrawBoard();
 		if(nodos!=null){
 			panelDraw.cleanAll();
 			panelDraw.repaint();
@@ -227,6 +235,12 @@ public class CreateWindowMaze  extends JDialog{
 
 	}
 
+	private void cargarLaberinto(boolean abrirEditor){
+		String path = "C:/Users/Jenny/git/Laberinto/Final_Graphs_Maze/Rutas.txt" ;
+			File archivo= new File(path);
+			readFile(archivo,abrirEditor);
+		
+	}
 	public PanelDrawBoard getPanelDraw() {
 		return panelDraw;
 	}

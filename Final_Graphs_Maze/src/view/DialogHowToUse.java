@@ -13,14 +13,26 @@ import javax.swing.JTextArea;
 import config.HandlerLanguage;
 import config.HandlerProperties;
 import constant.ConstantsView;
-
+/**
+ * UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA
+ * FACULTAD DE INGENIERIA.
+ * ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION.
+ * PRESENTADO A: Ing Helver Valero.
+ * PROGRAMACION III
+ * 
+ * @author  Jenny Quesada , Ruth Rojas
+ */
 public class DialogHowToUse extends JDialog {
 
+	//------Atributtes------
+	
 	private static final long serialVersionUID = -8494982714203988239L;
 	private JTextArea areaInstructions;
 
-	public DialogHowToUse(JFrame j) {
-		super(j );
+	//-----Builder-----
+	
+	public DialogHowToUse(JFrame frame) {
+		super(frame );
 		this.setSize(ConstantsView.WIDTH_DIALOJ_ABOUT, 280);
 		this.setLocationRelativeTo(null);
 		addAreaInstructions();
@@ -32,6 +44,9 @@ public class DialogHowToUse extends JDialog {
 		}
 		this.setVisible(true);
 	}
+	
+	//------Methods------
+	
 	private void readDoc(){
 		String infoFile = new String(), path = "src/resources/instructions.txt";
 		File archivo = new File(path);
@@ -61,6 +76,7 @@ public class DialogHowToUse extends JDialog {
 	}
 
 	private void addAreaInstructions() {
+		
 		areaInstructions = new JTextArea();
 		this.add(areaInstructions);
 		areaInstructions.setEditable(false);

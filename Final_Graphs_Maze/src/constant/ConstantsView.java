@@ -55,7 +55,7 @@ public class ConstantsView {
 	 */
 	public static final int DEFAULT_SIZE = 600;
 	public static final String DEFAUTL_NAME_WINDOW = "Crear Laberinto";
-	public static final String DEFAULT_BUTTON_CREATE = "Generar Laberinto";
+	public static final String DEFAULT_BUTTON_CREATE = "Terminar Edicion";
 	public static final String DEFAULT_BUTTON_SOLVE = "Resolver Laberinto";
 	public static final String DEFAULT_BUTTON_CLOSE = "Cerrar";
 	
@@ -76,6 +76,7 @@ public class ConstantsView {
 	
 	public static final String TITLE_PANEL_IMAGE = "Visualizacion_imagen";
 	
+	
 	/**
 	 * Constantes de la ventan  de selccion de imagenes
 	 */
@@ -95,5 +96,14 @@ public class ConstantsView {
 	public static final int HEIGHT_DIALOG_ABOUT = 580;
 	public static final String INFO_ABOUT = "INFO_ABOUT";
 	public static final String TITLE_DIALOG_HOW_TO_USE = "TITLE_DIALOG_HOW_TO_USE";
+	
+	/**
+	 * Constante WindowSpalhs
+	 */
+	
+	public final static String  DEFAULT_IMAGE_LOCATION = "/imagesSettings/Laberinto.jpg";
+	public final static int DEFAULT_SIZE_WIDTH = 450;
+	public final static int DEFAULT_SIZE_HIGTH = 350;
+	public static final int DEFAULT_THREAD = 4000;
 	
 }

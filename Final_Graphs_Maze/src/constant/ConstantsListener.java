@@ -19,7 +19,8 @@ public class ConstantsListener {
 	public static final String ITEM_FILE_LANGUAGE_SPANISH = "itemLanguageSpanish";
 	public static final String ITEM_FILE_LANGUAGE_ENGLISH = "itemLanguageEnglish";
 	public static final String OPEN = "Open";
-	public static final String CREATE_MAZE = "createMaze";
+	public static final String EDIT_MAZE_PATH = "Editar Ruta";
 	public static final String ITEM_ABOUT = "ITEM_ABOUT";
 	public static final String ITEM_HELP_HOW_TO_USE = "ITEM_HELP_HOW_TO_USE";
+	public static final String ITEM = "ITEM";
 }

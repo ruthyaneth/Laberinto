@@ -14,7 +14,7 @@ import javax.swing.border.LineBorder;
  * PRESENTADO A: Ing Helver Valero.
  * PROGRAMACION III
  * Clase 
- * @author Adrian Parra, Jenny Quesada, Daniel Reyes , Ruth Rojas
+ * @author Jenny Quesada, Ruth Rojas
  */
 public class PanelOpenImage  extends JPanel{
 	
